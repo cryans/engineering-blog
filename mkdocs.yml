@@ -21,7 +21,8 @@ theme:
   features:
     - navigation.instant
     - content.code.copy
-
+  nav:
+    - Home: index.md
 #plugins:
 #  - blog:
 #      draft_on_serve: false  # Keeps drafts visible with a badge during local 'mkdocs serve'
