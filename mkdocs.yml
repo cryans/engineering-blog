@@ -23,10 +23,9 @@ theme:
     - content.code.copy
   nav:
     - Home: index.md
-    - PUML: puml.md
-plugins:
-  - plantuml:
-      puml_url: https://www.plantuml.com/plantuml/
+#plugins:
+#  - blog:
+#      draft_on_serve: false  # Keeps drafts visible with a badge during local 'mkdocs serve'
 
 markdown_extensions:
   - pymdownx.highlight:
