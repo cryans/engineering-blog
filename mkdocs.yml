@@ -22,9 +22,9 @@ theme:
     - navigation.instant
     - content.code.copy
 
-plugins:
-  - blog:
-      draft_on_serve: true  # Keeps drafts visible with a badge during local 'mkdocs serve'
+#plugins:
+#  - blog:
+#      draft_on_serve: false  # Keeps drafts visible with a badge during local 'mkdocs serve'
 
 markdown_extensions:
   - pymdownx.highlight:
