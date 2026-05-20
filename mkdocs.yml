@@ -1,17 +1,17 @@
 site_name: Agile in Exile - Engineering Notes
-site_url: https://gleam.ch  # Replace with your actual .ch domain later
-
+site_url: https://blog.gleam.ch  
+  
 theme:
   name: material
   palette:
-    - media: "(prefers-color-scheme: light)"
+    - media: "(prefers-color-scheme: dark)"
       scheme: default
       primary: teal
       accent: indigo
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
+    - media: "(prefers-color-scheme: light)"
       scheme: slate
       primary: teal
       accent: indigo
