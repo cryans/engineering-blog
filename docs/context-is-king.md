@@ -1,4 +1,6 @@
-# Context is King
+# 
+
+## Context is King
 
 Calls to LLMs are essentially stateless. The illusion of conversational memory is achieved by
 passing all previous interactions as part of the message - generally refered to as the context.
@@ -65,10 +67,15 @@ Managing context is probably the most important aspect of effective use of LLMs 
 
 ## Enter the Ralph loop
 
-As conversations stretch out, attention dilutes, hallucinations creep in, and models hit the dreaded "dumb zone". 
+As conversations stretch out, attention dilutes, hallucinations creep in, and models hit the dreaded 
+"[dumb zone](https://agentpatterns.ai/context-engineering/context-window-dumb-zone/)". 
 The industry's crude fix has been context compaction—summarizing past chats into a blurry mess.  
 
-Enter the Ralph loop: instead of forcing a single, bloated chat session to remember everything until it breaks, you treat context as disposable. 
-You spin up a fresh agent instance for a single discrete task, let it read state from the file system (like a markdown spec or task list), execute, commit, and wipe the slate clean.  
+[Enter](https://stevekinney.com/writing/the-ralph-loop#:~:text=The%20Ralph%20Loop's%20answer%20to%20this%20is,fresh.%20Every%20time.%20Why%20that%20actually%20works_)
+the 
+[Ralph loop](https://understandingdata.com/posts/ralph-loop/): instead of forcing a single, 
+bloated chat session to remember everything until it breaks, you treat context as disposable. 
+You spin up a fresh agent instance for a single discrete task, let it read state from the 
+file system (like a markdown spec or task list), execute, commit, and wipe the slate clean.  
 
 Because context is king, sometimes the smartest move you can make is destroying it and starting fresh.

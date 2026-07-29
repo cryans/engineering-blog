@@ -39,7 +39,7 @@ may want to reload the original layer, or swap in special lora adapters for inst
 
 ## Axolotl
 
-There are a number of open source frameworks to help with this. I took a look in to:
+There are a number of open source frameworks that implement LORA. I took a look in to
 [axolotl](https://axolotl.ai)
 
 Being interested in local data models (and concious of running BIG experiments on expensive cloud
@@ -48,11 +48,8 @@ GPUs) I decided to try it on my own machine.
 axototl has an [example.yml](https://github.com/axolotl-ai-cloud/axolotl/blob/main/examples/llama-3/lora-1b.yml)
 that you can run out of the box (more or less).
 
-The axolotl example takes a
 - 1.23B parameter model; Llama-3.2-1B; 
 - [hugging-face dataset](https://huggingface.co/datasets/teknium/GPT4-LLM-Cleaned)
-for instruction fine tuning...
-
 
 Here are a few examples from the dataset:
 
@@ -75,9 +72,7 @@ Here are a few examples from the dataset:
   },
 ```
 
-
-
-Unfortunately, my GPU couldn't handle this due to out of memory issues. I only have 6gb VRAM...
+Unfortunately, my GPU couldn't handle this example due to out of memory issues. I only have 6gb VRAM...
 
 ```bash
 
@@ -96,7 +91,8 @@ Wed Jul 29 13:57:38 2026
 +-----------------------------------------+------------------------+----------------------+
 ```
 
-I tweaked the example.yml config to only use sequence_len of 512
+I tweaked the example.yml config to only use sequence_len of 512; and off the model went to 
+train. For five hours...
 
 
 ```
@@ -123,3 +119,7 @@ I tweaked the example.yml config to only use sequence_len of 512
  [ ~4.5 - 5.0 GB Total VRAM Required ] ────────────────────────────────────────
  
 ```
+
+## Evaluation
+
+So, how can we check our work?
