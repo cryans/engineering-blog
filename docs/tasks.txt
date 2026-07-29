@@ -1,0 +1,40 @@
+Done 1. Sort of the permissions issue 
+ 2. resolve the pi-dev config. 
+Done 3. REsolve the issue with python RUN cd backend && uv pip install . --system 
+Started... 4. Seperate folders for data...
+
+ok - here's the directory structure I have
+
+./data/
+├── backend
+│   └── metadata.db
+├── internet
+│   ├── bls
+│   │   └── surveys.json
+│   └── t1.json
+├── minio
+│   └── test
+│       ├── 45c4e87a-0268-41d4-a0a8-322175ee8039
+│       │   └── xl.meta
+│       └── 47ffd074-2981-432d-b549-caae2b74eded
+│           └── xl.meta
+├── pi
+│   └── agent
+│       ├── auth.json
+│       ├── sessions
+│       │   └── --workspace--
+│       │       └── 2026-06-10T09-50-48-826Z_019eb0f1-0ffa-7131-bf54-cd29bbbd13f0.jsonl
+│       └── settings.json
+└── staging
+    ├── 03cbbca6-363b-477c-ac45-cc0653932308
+    ├── 0a9230ce-8293-422c-94ec-2c8a242e0712
+		
+The purpose of each folder is:
+
+internet - random downloads from the internet (mostly data in csv formats
+minio - I am using this for S3 -- again I want this to be persistent
+pi - pi dev config AND importantly jsonl files
+staging - an internal staging area before commiting to S3
+backend - place to stored sqlite db; and any intermediate sqlite dbs
+
+Here's my docker-compose.yml

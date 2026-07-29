@@ -1,0 +1,13 @@
+# Decision Fatigue
+
+Now that we have coding capabilities at our finger tips - I would guess that 
+it's like having a team of "free" interns - very smart interns, who've done 
+every tutorial, read every. With such resources available, imagine what we 
+could do?
+
+Well, a lot. What would have been a simple end point to get started, suddenly becomes
+a whole torrent of architectural descisions - things that would have eventually
+got done, but can now "get done" right at the start. Let's go through an example
+I've jsut experienced...
+
+I wanted to have a  
