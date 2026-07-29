@@ -60,3 +60,15 @@ and now we get back...
 The model was able to get the right answer by checking the context of the entire conversation.
 
 No imagine you're having a really long converation; the total message size across <i>the entire conversation</i> is n**2
+
+Managing context is probably the most important aspect of effective use of LLMs for long running tasks.
+
+## Enter the Ralph loop
+
+As conversations stretch out, attention dilutes, hallucinations creep in, and models hit the dreaded "dumb zone". 
+The industry's crude fix has been context compaction—summarizing past chats into a blurry mess.  
+
+Enter the Ralph loop: instead of forcing a single, bloated chat session to remember everything until it breaks, you treat context as disposable. 
+You spin up a fresh agent instance for a single discrete task, let it read state from the file system (like a markdown spec or task list), execute, commit, and wipe the slate clean.  
+
+Because context is king, sometimes the smartest move you can make is destroying it and starting fresh.
