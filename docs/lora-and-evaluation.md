@@ -6,7 +6,7 @@ I've been taking a course on
 It's covers topics like:
 
 - Supervised Fine Tuning
-- PEFT - Parameter Effecient Fine Tuning)
+- PEFT - Parameter Efficient Fine Tuning)
 - LORA (Low Rank Adapters)
 ...
 
@@ -14,22 +14,22 @@ It's covers topics like:
 
 ## LORA 
 
-Say you have a pretrained LLM, and you want to improve it for your own data/task in a way that's data effecient. Enter LORA...
+Say you have a pretrained LLM, and you want to improve it for your own data/task in a way that's data efficient. Enter LORA...
 
 The [LORA paper](https://arxiv.org/abs/2106.09685) has a really nice picture that covers the idea 
 at a very high level.
 
 ![LORA](assets/lora-and-evaluation.png)
 
-Essentially, you <b>freeze</b> the weights of the entire mode, except one layer .
+Essentially, you <b>freeze</b> the weights of the entire model backbone, except some targetted layers.
 
-This layer e.g. [1000 x 1000] is replaced with the LORA adapter; two smaller layers of rank R
+Layers e.g. [1000 x 1000] are replaced with a LORA adapter; two smaller layers of rank R
  [1000 x R] x [R * 1000]. 
 
-The model is trained on the new dataset, but backprop only updates
-parameters from the LORA adapter [1000 x R] x [R * 1000]
+The model is trained on the new dataset - e.g. rank R = 50 - but backprop only updates
+parameters from the LORA adapter [1000 x 50] x [50 * 1000]
 
-This vastly reduces the number of parameters that need to be trained: Picking R to be 50...
+This vastly reduces the number of parameters that need to be trained.
 
 - Original trainable parameters; 1000 x 1000 == 1,000,000 parameters
 - Lora trainable parameters; 1000 x 50 + 50 x 1000 == 100,000 parameters
@@ -42,7 +42,7 @@ may want to reload the original layer, or swap in special lora adapters for inst
 There are a number of open source frameworks that implement LORA. I took a look in to
 [axolotl](https://axolotl.ai)
 
-Being interested in local data models (and concious of running BIG experiments on expensive cloud
+Being interested in local data models (and conscious of running BIG experiments on expensive cloud
 GPUs) I decided to try it on my own machine. 
 
 axototl has an [example.yml](https://github.com/axolotl-ai-cloud/axolotl/blob/main/examples/llama-3/lora-1b.yml)
@@ -94,6 +94,7 @@ Wed Jul 29 13:57:38 2026
 I tweaked the example.yml config to only use sequence_len of 512; and off the model went to 
 train. For five hours...
 
+Here's an LLM generated layout of the GPU memory...
 
 ```
 ===================================================================================
@@ -123,3 +124,29 @@ train. For five hours...
 ## Evaluation
 
 So, how can we check our work?
+
+Aside from the training set, there's a published [eval](https://huggingface.co/datasets/tatsu-lab/alpaca_eval) 
+[raw](https://raw.githubusercontent.com/tatsu-lab/alpaca_eval/main/src/alpaca_eval/evaluations/alpaca_eval/alpaca_eval.json)
+
+
+There are different approaches we can use here A/B testing the old model vs new model.
+
+But we still need a grader:
+
+- Manually grade 805 examples
+- Give the grading to an LLM (student / teacher)
+
+I decided to start off with manually grading 50 samples. I vibe coded up a small app to help me...
+
+![lore-vibe-coded-manual-grader](assets/lore-vibe-coded-manual-grader.png)
+
+The results were disappointing, with a close to 50/50 split, slightly favoring the base model over the LORA model. 
+At this point, I decided it wasn't worth spending the effort to set up an automated grader.
+
+There were a couple of issues I could see with the approach:
+
+- I didn't really understand the goal of the axototl example (improve instructions?) -- this made it difficult to grade
+- Llama-3.2-1B is a fairly small model, so the answers are a bit random anyway
+- the LORA training dataset isn't huge
+
+LORA didn't work well here, but there'll be another experiment where I'll address some of the shortcomings...

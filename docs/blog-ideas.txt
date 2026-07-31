@@ -1,0 +1,19 @@
+The 6GB VRAM Survival Guide: How to squeeze local LLM training, hotswapping LoRA adapters, and custom evaluation UIs onto older consumer hardware without melting your GPU.
+
+Against the Cloud Monopoly: Why building a local-first, offline AI engineering loop gives you faster feedback than any managed API.
+
+From Vibe Checks to Data Pipelines: Turning subjective model testing into clean, structured preference JSON files ready for future DPO runs.
+
+Keyboard-Driven Engineering: Designing a minimalist Gradio evaluation arena with custom JavaScript event delegation for high-speed human-in-the-loop workflows.
+
+The Unix Philosophy Meets AI: Using standard command-line tools like jq, uv, and shell scripts to manage machine learning datasets instead of bloated proprietary frameworks.
+
+Zero-Dollar RLHF: How to evaluate and align small language models (like Llama 3.2 1B) using open benchmarks like AlpacaEval and zero cloud compute spend.
+
+Agile in Exile: Ditching corporate agile ceremonies for data-driven iteration, local monorepos, and rigorous self-hosted experimentation.
+
+Blind-Testing Your Own Code: Why randomized A/B output shuffling is essential to eliminate bias when grading your own fine-tuned model adaptations.
+
+The Architecture of a Minimalist AI Sandbox: Keeping codebases modular, transparent, and portable during a sabbatical deep-dive into machine learning engineering.
+
+The Loser’s Guide to Paradise: Embracing garden leave, hardware constraints, and independent technical freedom to build systems entirely on your own terms.
